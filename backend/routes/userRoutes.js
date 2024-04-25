@@ -10,21 +10,21 @@ import {
   deleteUser,
   updateUser,
 } from '../controllers/userController.js';
-// import { protect, admin } from '../middleware/authMiddleware.js'; // Remove protect middleware
+import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.route('/').post(registerUser).get(getUsers); // Remove protect middleware
+router.route('/').post(registerUser).get(protect, admin, getUsers);
 router.post('/logout', logoutUser);
 router.post('/auth', authUser);
 router
   .route('/profile')
-  .get(getUserProfile)
-  .put(updateUserProfile);
+  .get(protect, getUserProfile)
+  .put(protect, updateUserProfile);
 router
   .route('/:id')
-  .delete(deleteUser)
-  .get(getUserById)
-  .put(updateUser);
+  .delete(protect, admin, deleteUser)
+  .get(protect, admin, getUserById)
+  .put(protect, admin, updateUser);
 
 export default router;
