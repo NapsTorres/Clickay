@@ -18,6 +18,11 @@ const generateToken = (res, userId) => {
     sameSite: 'strict',
     maxAge: 1000 * 60 * 60 * 24 * 10, // 10 days
   });
+
+  // Log the generated token
+  console.log('Generated Token:', token);
+
+  return token; // Return the token if needed
 };
 
 export default generateToken;
