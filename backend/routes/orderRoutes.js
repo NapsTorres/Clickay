@@ -7,7 +7,7 @@ import {
   updateOrderToDelivered,
   getOrders,
 } from '../controllers/orderController.js';
-// import { protect, admin } from '../middleware/authMiddleware.js'; // Remove protect middleware
+import { admin } from '../middleware/authMiddleware.js'; // Remove protect middleware
 
 const router = express.Router();
 
