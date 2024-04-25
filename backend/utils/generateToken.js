@@ -13,11 +13,12 @@ const generateToken = (res, userId) => {
 
   // Set JWT as a cookie
   res.cookie('jwt', token, {
-    httpOnly: false, // Removed HTTP-only flag
-    secure: process.env.NODE_ENV !== 'development',
-    sameSite: 'strict',
-    maxAge: 1000 * 60 * 60 * 24 * 10, // 10 days
-  });
+  httpOnly: false,
+  secure: false, // Allow cookie to be sent over both HTTP and HTTPS
+  sameSite: 'strict',
+  maxAge: 1000 * 60 * 60 * 24 * 10, // 10 days
+});
+
 
   // Log the generated token
   console.log('Generated Token:', token);
