@@ -8,7 +8,7 @@ import {
   createProductReview,
   getTopProducts,
 } from '../controllers/productController.js';
-import { admin } from '../middleware/authMiddleware.js'; // Remove protect middleware
+import { protect, admin } from '../middleware/authMiddleware.js'; // Remove protect middleware
 
 const router = express.Router();
 
