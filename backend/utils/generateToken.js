@@ -11,11 +11,11 @@ const generateToken = (res, userId) => {
     },
   );
 
-  // Set JWT as HttpOnly cookie
+  // Set JWT as cookie with sameSite attribute set to 'lax'
   res.cookie('jwt', token, {
-    httpOnly: true,
+    httpOnly: false,
     secure: process.env.NODE_ENV !== 'development',
-    sameSite: 'strict',
+    sameSite: 'none', // Set sameSite attribute to 'lax'
     maxAge: 1000 * 60 * 60 * 24 * 10, // 10 days
   });
 };
